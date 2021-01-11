@@ -49,7 +49,7 @@ class Tabs {
 
     selectById(id,tabs) {
         const currentElement = tabs.querySelector(`[data-id="${id}"]`)
-        console.log('currentElement', currentElement)
+        //console.log('currentElement', currentElement)
         this.currentElement = currentElement
     }
 
@@ -65,7 +65,7 @@ class Tabs {
         //     this.isOpen(tab) ? this.close(tab,tabs) : this.open(tab, tabs)
         //     // console.log("tab",tab)
         //     // this.close(tab, tabs)
-        console.log("TABS",tabs)
+        //console.log("TABS",tabs)
         // })
 
         tabs.querySelectorAll(".tabs__tab-content").forEach(el => {
@@ -90,7 +90,7 @@ class Tabs {
     }
 
     open(el,tabs) {
-        console.log('[open]this.currentTabs', tabs)
+        //console.log('[open]this.currentTabs', tabs)
         el.classList.add('active')
         const _el = tabs.querySelector("#"+this.idTriggerTab)
         _el.classList.remove('tabs-content__item')
@@ -99,7 +99,7 @@ class Tabs {
     }
 
     close(el,tabs) {
-        console.log('[close]this.currentTabs', tabs)
+        //console.log('[close]this.currentTabs', tabs)
         el.classList.remove('active')
         const _el = tabs.querySelector("#"+this.idTriggerTab)        
     }
