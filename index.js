@@ -5,15 +5,12 @@ class Tabs {
         this.tabContentAll = null
         this.currentElement = null
         this.idTriggerTab = null
-        this.currentTabs = null
         this.setup()
     }
 
     setup() {
-        //this.clickHandler = this.clickHandler.bind(this)
         if (this.tabsAll) {
             this.tabsAll.forEach(_tabs => {
-                //this.currentTabs = tabs
                 const tabsTriggersAll = _tabs.querySelectorAll('[data-tabs="triggers"]')
                 const tabContentAll = _tabs.querySelectorAll('[data-tabs="content"]')
                 if (tabsTriggersAll) this.generateId(tabsTriggersAll)
@@ -27,10 +24,8 @@ class Tabs {
                         const idTriggerTab = ev.target.getAttribute('href').replace('#', '')
                         this.idTriggerTab = idTriggerTab
                         this.selectById(id,_tabs)
-                        // this.tabsTriggersAll.forEach((child) => child.classList.remove('active'))
                         this.tabContentAll.forEach((child) => {
                                                    child.classList.remove('tabs-content__item')
-                                                   // child.classList.remove('active')
                         })
                                                   
                         this.toggle(ev.target, _tabs)
@@ -42,14 +37,13 @@ class Tabs {
 
     generateId(elements) {
         elements.forEach((el) => {
-            const id = Math.random().toString(36).substring(7) // generate uniq id for questions
+            const id = Math.random().toString(36).substring(7) // generate uniq id for triggers
             el.dataset.id = id
         })
     }
 
     selectById(id,tabs) {
         const currentElement = tabs.querySelector(`[data-id="${id}"]`)
-        //console.log('currentElement', currentElement)
         this.currentElement = currentElement
     }
 
@@ -58,16 +52,6 @@ class Tabs {
     }
 
     toggle(el, tabs) {
-        
-
-        // document.querySelectorAll('.process-counter__item.active').forEach(tab => {
-            
-        //     this.isOpen(tab) ? this.close(tab,tabs) : this.open(tab, tabs)
-        //     // console.log("tab",tab)
-        //     // this.close(tab, tabs)
-        //console.log("TABS",tabs)
-        // })
-
         tabs.querySelectorAll(".tabs__tab-content").forEach(el => {
                                                                 
             el.classList.remove('tabs-content__item')
@@ -90,7 +74,6 @@ class Tabs {
     }
 
     open(el,tabs) {
-        //console.log('[open]this.currentTabs', tabs)
         el.classList.add('active')
         const _el = tabs.querySelector("#"+this.idTriggerTab)
         _el.classList.remove('tabs-content__item')
@@ -99,9 +82,7 @@ class Tabs {
     }
 
     close(el,tabs) {
-        //console.log('[close]this.currentTabs', tabs)
         el.classList.remove('active')
-        const _el = tabs.querySelector("#"+this.idTriggerTab)        
     }
                                                           
 }
